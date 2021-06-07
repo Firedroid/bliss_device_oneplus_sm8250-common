@@ -1,0 +1,3 @@
+-keep class org.bliss.device.DeviceSettings.* {
+  *;
+}
