@@ -60,6 +60,7 @@ public class DeviceSettings extends PreferenceFragment
         implements Preference.OnPreferenceChangeListener {
 
     public static final String CATEGORY_DISPLAY = "display";
+    public static final String KEY_DC_SWITCH = "dc";
     public static final String KEY_HBM_SWITCH = "hbm";
     public static final String KEY_AUTO_HBM_SWITCH = "auto_hbm";
     public static final String KEY_AUTO_HBM_THRESHOLD = "auto_hbm_threshold";
@@ -84,6 +85,7 @@ public class DeviceSettings extends PreferenceFragment
     private static SwitchPreference mFpsInfo;
     private static ListPreference mFpsInfoPosition;
     private static ListPreference mFpsInfoColor;
+    private static TwoStatePreference mDCModeSwitch;
     private static TwoStatePreference mHBMModeSwitch;
     private static TwoStatePreference mGameModeSwitch;
     private static TwoStatePreference mAutoHBMSwitch;
@@ -109,6 +111,11 @@ public class DeviceSettings extends PreferenceFragment
         win.setNavigationBarDividerColor(res.getColor(R.color.primary_color));
 
         getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
+
+        mDCModeSwitch = (TwoStatePreference) findPreference(KEY_DC_SWITCH);
+        mDCModeSwitch.setEnabled(DCModeSwitch.isSupported());
+        mDCModeSwitch.setChecked(DCModeSwitch.isCurrentlyEnabled(this.getContext()));
+        mDCModeSwitch.setOnPreferenceChangeListener(new DCModeSwitch());
 
         mHBMModeSwitch = (TwoStatePreference) findPreference(KEY_HBM_SWITCH);
         mHBMModeSwitch.setEnabled(HBMModeSwitch.isSupported());
