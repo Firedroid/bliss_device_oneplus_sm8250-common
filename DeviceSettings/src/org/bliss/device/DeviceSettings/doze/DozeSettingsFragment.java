@@ -39,7 +39,7 @@ import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragment;
-import com.bliss.support.preferences.SwitchPreference;
+import androidx.preference.SwitchPreference;
 
 import org.bliss.device.DeviceSettings.R;
 
